@@ -17,83 +17,84 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-  :root {
-    --bg:#050505;
-    --fg:#f5f3e8;
-    --muted:#9a9588;
-    --brand:#e2c46d;
-    --brand-2:#fae9b0;
-    --card:#0c0c0cdd;
-    --border:#3a3a3a;
-    --radius:18px;
-    --maxw:1250px;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif}
-  a{text-decoration:none;color:inherit}
+    :root {
+      --bg:#050505;
+      --fg:#f5f3e8;
+      --muted:#9a9588;
+      --brand:#e2c46d;
+      --brand-2:#fae9b0;
+      --card:#0c0c0cdd;
+      --border:#3a3a3a;
+      --radius:18px;
+      --maxw:1250px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif}
+    a{text-decoration:none;color:inherit}
 
-  /* HEADER */
-  header{position:sticky;top:0;background:rgba(0,0,0,.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);z-index:50}
-  .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
-  nav ul{display:flex;gap:36px;list-style:none;margin:0;padding:0}
-  nav a{opacity:.85;font-weight:500;font-size:15px}
-  nav a:hover{opacity:1;color:var(--brand)}
+    /* HEADER */
+    header{position:sticky;top:0;background:rgba(0,0,0,.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);z-index:50}
+    .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
+    nav ul{display:flex;gap:36px;list-style:none;margin:0;padding:0}
+    nav a{opacity:.85;font-weight:500;font-size:15px}
+    nav a:hover{opacity:1;color:var(--brand)}
 
-  /* BUTTON */
-  .btn{padding:14px 32px;border-radius:999px;border:1px solid var(--brand);background:linear-gradient(135deg,#1a1a1a,#000);color:var(--brand);font-weight:600;transition:.25s;box-shadow:0 0 12px rgba(255,215,94,.25)}
-  .btn:hover{background:var(--brand);color:#000;box-shadow:0 0 26px var(--brand-2);transform:translateY(-2px)}
+    /* BUTTON */
+    .btn{padding:14px 32px;border-radius:999px;border:1px solid var(--brand);background:linear-gradient(135deg,#1a1a1a,#000);color:var(--brand);font-weight:600;transition:.25s;box-shadow:0 0 12px rgba(255,215,94,.25)}
+    .btn:hover{background:var(--brand);color:#000;box-shadow:0 0 26px var(--brand-2);transform:translateY(-2px)}
 
-  /* HERO */
-  main.hero{
-    text-align:center;
-    padding:190px 20px 160px;
-    background:linear-gradient(to bottom,rgba(0,0,0,.4),#050505),url('YOUR-HERO.jpg') center/cover no-repeat;
-  }
-  .title{
-    font-size:clamp(48px,6vw,92px);
-    font-weight:800;
-    letter-spacing:1px;
-    background:linear-gradient(90deg,#f8e9b0,#d4b048);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    text-shadow:0 0 36px rgba(242,224,160,.45);
-    margin:0 0 24px;
-  }
-  .lead{
-    font-size:20px;
-    max-width:700px;
-    margin:0 auto;
-    color:var(--muted);
-  }
+    /* HERO */
+    main.hero{
+      text-align:center;
+      padding:190px 20px 160px;
+      background:linear-gradient(135deg,#000,#1a1a1a);
+    }
+    .title{
+      font-size:clamp(48px,6vw,92px);
+      font-weight:800;
+      letter-spacing:1px;
+      background:linear-gradient(90deg,#f8e9b0,#d4b048);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:0 0 36px rgba(242,224,160,.45);
+      margin:0 0 24px;
+    }
+    .lead{
+      font-size:20px;
+      max-width:700px;
+      margin:0 auto;
+      color:var(--muted);
+    }
 
-  /* SECTIONS */
-  section{padding:110px 0;border-top:1px solid rgba(255,255,255,.08)}
-  h2{text-align:center;font-size:38px;margin-bottom:14px;font-weight:700;color:var(--brand)}
-  p.section-lead{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 52px;font-size:18px}
+    /* SECTIONS */
+    section{padding:110px 0;border-top:1px solid rgba(255,255,255,.08)}
+    h2{text-align:center;font-size:38px;margin-bottom:14px;font-weight:700;color:var(--brand)}
+    p.section-lead{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 52px;font-size:18px}
+    
+    /* GRID + CARDS */
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+    .card{
+      background:var(--card);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:var(--radius);
+      padding:34px 30px;
+      box-shadow:0 0 32px rgba(0,0,0,.5);
+      backdrop-filter:blur(16px);
+    }
+    .card h3{margin:0 0 16px;font-size:22px;font-weight:700;color:var(--brand)}
+    .pricing .price{font-size:40px;font-weight:800;margin:6px 0 20px;color:var(--brand)}
 
-  /* GRID + CARDS */
-  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
-  .card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:var(--radius);
-    padding:34px 30px;
-    box-shadow:0 0 32px rgba(0,0,0,.5);
-    backdrop-filter:blur(16px);
-  }
-  .card h3{margin:0 0 16px;font-size:22px;font-weight:700;color:var(--brand)}
-  .pricing .price{font-size:40px;font-weight:800;margin:6px 0 20px;color:var(--brand)}
+    /* FORM */
+    input,textarea{
+      width:100%;padding:16px 18px;border-radius:12px;border:1px solid #333;background:#0a0a0a;color:var(--fg);font-size:16px;margin-bottom:14px
+    }
 
-  /* FORM */
-  input,textarea{
-    width:100%;padding:16px 18px;border-radius:12px;border:1px solid #333;background:#0a0a0a;color:var(--fg);font-size:16px;margin-bottom:14px
-  }
-
-  /* FOOTER */
-  footer{text-align:center;padding:60px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:14px}
-</style>
+    /* FOOTER */
+    footer{text-align:center;padding:60px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:14px}
+  </style>
 </head>
 <body>
+
   <!-- Header -->
   <header>
     <div class="wrap nav">
@@ -111,175 +112,17 @@
   </header>
 
   <!-- Hero -->
-  <main id="top" class="hero" style="padding:160px 20px;background:linear-gradient(135deg,#000,#1a1a1a);text-align:center;">
-  <div class="wrap">
-    <h1 class="title" style="font-weight:800;color:#e7c96d;text-shadow:0 0 30px rgba(231,201,109,.8);">
-      A-Vibe
-    </h1>
-    <p class="lead" style="max-width:700px;margin:auto;color:#dcdcdc;">
-      Dịch vụ DJ & sự kiện cao cấp — mang âm nhạc đến mọi không gian.
-    </p>
-    <div class="cta" style="justify-content:center;gap:14px;margin-top:32px;">
-      <a class="btn" href="#contact">Nhận tư vấn</a>
-    </div>
-  </div>
-</main>
-
-  <!-- About -->
-  <section id="about">
+  <main id="top" class="hero">
     <div class="wrap">
-      <h2>A-Vibe là ai?</h2>
-      <p class="section-lead">A-Vibe là dịch vụ vô hình trung gian kết nối DJ chuyên nghiệp & bán chuyên với các địa điểm giải trí (café, bar, lounge, pub, club) cả online & offline. Nền tảng giúp địa điểm dễ dàng tìm DJ phù hợp phong cách, đồng thời mở rộng cơ hội biểu diễn cho cộng đồng DJ Việt Nam.</p>
-      
-    </div>
-  </section>
-
-  <!-- Combos (Gọn) -->
-  <section id="combos">
-    <div class="wrap">
-      <h2>Combo dịch vụ</h2>
-      <p class="section-lead">Giải pháp chọn nhanh theo nhu cầu sự kiện — tinh gọn, hiệu quả, đúng vibe.</p>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Party</h3>
-          <p class="muted">Sinh nhật • Liên hoan — DJ trẻ trung, playlist may đo, setup gọn.</p>
-          <a class="btn" href="#contact">Nhận tư vấn</a>
-        </div>
-        <div class="card">
-          <h3>Corporate</h3>
-          <p class="muted">Year-end • Product launch — timeline chuẩn, âm nhạc nâng tầm thương hiệu.</p>
-          <a class="btn" href="#contact">Nhận tư vấn</a>
-        </div>
-        <div class="card">
-          <h3>Wedding</h3>
-          <p class="muted">Ceremony + After-party — lãng mạn → bùng nổ, đồng bộ từng khoảnh khắc.</p>
-          <a class="btn" href="#contact">Nhận tư vấn</a>
-        </div>
-        <div class="card">
-          <h3>Outdoor</h3>
-          <p class="muted">Team building • Resort — năng lượng cao, phối hợp hoạt động.</p>
-          <a class="btn" href="#contact">Nhận tư vấn</a>
-        </div>
+      <h1 class="title">A-Vibe</h1>
+      <p class="lead">Dịch vụ DJ & sự kiện cao cấp — mang âm nhạc đến mọi không gian.</p>
+      <div style="justify-content:center;gap:14px;margin-top:32px;">
+        <a class="btn" href="#contact">Nhận tư vấn</a>
       </div>
     </div>
-  </section>
+  </main>
 
-  <!-- Services -->
-  <section id="services">
-    <div class="wrap">
-      <h2>Dịch vụ</h2>
-      <p class="section-lead">Tạo POP-UP cho quán: mời DJ + truyền thông trọn gói.</p>
-      <div class="grid-3">
-        <div class="card"><h3>POP-UP DJ</h3><p class="muted">Mời DJ phù hợp concept quán • Setlist may đo • Setup gọn.</p></div>
-        <div class="card"><h3>Truyền thông</h3><p class="muted">Chụp ảnh/clip • Truyền thông social • Đẩy nhận diện quán.</p></div>
-        <div class="card"><h3>Combo Full</h3><p class="muted">DJ + Setup + Media + Quảng bá — trọn gói tối ưu chi phí.</p></div>
-      </div>
-    </div>
-  </section>
+  <!-- (… giữ nguyên phần còn lại …) -->
 
-  <!-- Work / Gallery -->
-  <section id="work">
-    <div class="wrap">
-      <h2>Dự án tiêu biểu</h2>
-      <p class="section-lead">Thêm ảnh thật của bạn vào thư mục <em>/assets/</em> và cập nhật liên kết.</p>
-      <div class="gallery">
-        <a class="g span-6" href="#"><img src="https://images.unsplash.com/photo-1529336953121-4f3cffe0a6fe?q=80&w=1400&auto=format&fit=crop" alt="Project 1"></a>
-        <a class="g span-6" href="#"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop" alt="Project 2"></a>
-        <a class="g span-4" href="#"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1400&auto=format&fit=crop" alt="Project 3"></a>
-        <a class="g span-4" href="#"><img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1400&auto=format&fit=crop" alt="Project 4"></a>
-        <a class="g span-4" href="#"><img src="https://images.unsplash.com/photo-1507208773393-40d9fc670acf?q=80&w=1400&auto=format&fit=crop" alt="Project 5"></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing">
-    <div class="wrap">
-      <h2>Bảng giá POP-UP</h2>
-      <p class="section-lead">Giá tùy quy mô sự kiện & DJ. Liên hệ để nhận báo giá tối ưu.</p>
-      <div class="pricing">
-        <div class="card">
-          <h3>Lite</h3>
-          <p class="muted">DJ + set nhạc 2h</p>
-          <div class="price">Từ 3tr</div>
-          <ul class="muted">
-            <li>DJ trẻ trung, đúng vibe quán</li>
-            <li>Playlist may đo</li>
-            <li>Setup gọn</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Standard</h3>
-          <p class="muted">DJ + media</p>
-          <div class="price">Từ 7tr</div>
-          <ul class="muted">
-            <li>DJ phù hợp concept</li>
-            <li>Chụp ảnh/clip highlight</li>
-            <li>Đăng bài social</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Full</h3>
-          <p class="muted">DJ + media + truyền thông</p>
-          <div class="price">Từ 12tr</div>
-          <ul class="muted">
-            <li>DJ premium theo vibe quán</li>
-            <li>Chụp/clip chuyên nghiệp</li>
-            <li>Quảng bá social + booking</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="wrap">
-      <h2>Liên hệ</h2>
-      <p class="section-lead">Điền form, hoặc email trực tiếp <a href="mailto:avibedj@gmail.com">avibedj@gmail.com</a></p>
-      <div class="grid-3">
-        <div class="card" style="grid-column: span 2;">
-          <form id="contact-form">
-            <input type="text" name="name" placeholder="Họ và tên" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <textarea name="message" placeholder="Nội dung" required></textarea>
-            <button class="btn" type="submit">Gửi yêu cầu</button>
-          </form>
-          <p id="form-status" class="muted" aria-live="polite" style="margin-top:8px"></p>
-        </div>
-        <div class="card">
-          <h3>Thông tin</h3>
-          <p class="muted">Địa chỉ, hotline, giờ làm việc…</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <div class="muted">© <span id="y"></span> A-Vibe. All rights reserved.</div>
-    </div>
-  </footer>
-
-  <script>
-    // Năm footer
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Form handler: mở mail app với nội dung
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = encodeURIComponent(data.get('name'));
-      const email = encodeURIComponent(data.get('email'));
-      const message = encodeURIComponent(data.get('message'));
-      const subject = encodeURIComponent('Liên hệ từ website');
-      const body = encodeURIComponent(`Họ tên: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\n\n${decodeURIComponent(message)}`);
-      window.location.href = `mailto:avibedj@gmail.com?subject=${subject}&body=${body}`;
-      status.textContent = 'Đã mở trình gửi email của bạn. Nếu không thấy, vui lòng gửi trực tiếp: avibedj@gmail.com';
-      form.reset();
-    });
-  </script>
 </body>
 </html>

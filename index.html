@@ -21,8 +21,8 @@
     --bg:#050505;
     --fg:#f5f3e8;
     --muted:#9a9588;
-    --brand:#ff5bd8;
-    --brand-2:#cfa6ff;
+    --brand:#ffffff;
+    --brand-2:#ffffff;
     --card:#0c0c0cdd;
     --border:#3a3a3a;
     --radius:18px;
@@ -219,21 +219,83 @@
   <section id="contact">
     <div class="wrap">
       <h2>Liên hệ</h2>
-      <p class="section-lead">Điền form, hoặc email trực tiếp <a href="mailto:avibedj@gmail.com">avibedj@gmail.com</a></p>
-      <div class="grid-3">
-        <div class="card" style="grid-column: span 2;">
-          <form id="contact-form">
-            <input type="text" name="name" placeholder="Họ và tên" required />
-            <input type="email" name="email" placeholder="Email" required />
-            <textarea name="message" placeholder="Nội dung" required></textarea>
-            <button class="btn" type="submit">Gửi yêu cầu</button>
+      <p class="section-lead">Sẵn sàng tạo nên sự kiện đáng nhớ? Liên hệ ngay với chúng tôi!</p>
+
+      <div class="grid-3" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1100px;margin:0 auto;">
+
+        <!-- FORM CARD -->
+        <div class="card" style="padding:36px;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px)">
+          <form class="space-y-6" id="contact-form">
+            <label style="font-size:14px;font-weight:600;opacity:.9">Họ và tên</label>
+            <input type="text" name="name" placeholder="Nguyễn Văn A" required />
+
+            <label style="font-size:14px;font-weight:600;opacity:.9">Số điện thoại</label>
+            <input type="text" name="phone" placeholder="0987248676" required />
+
+            <label style="font-size:14px;font-weight:600;opacity:.9">Email</label>
+            <input type="email" name="email" placeholder="avibedj@gmail.com" required />
+
+            <label style="font-size:14px;font-weight:600;opacity:.9">Nội dung</label>
+            <textarea name="message" placeholder="Mô tả sự kiện của bạn..." required></textarea>
+
+            <button class="btn" type="submit" style="margin-top:10px;width:100%">Gửi yêu cầu</button>
           </form>
-          <p id="form-status" class="muted" aria-live="polite" style="margin-top:8px"></p>
+          <p id="form-status" class="muted" style="margin-top:10px"></p>
         </div>
-        <div class="card">
-          <h3>Thông tin</h3>
-          <p class="muted">Địa chỉ, hotline, giờ làm việc…</p>
+
+        <!-- INFO COLUMN -->
+        <div class="space-y-8">
+
+          <div class="card" style="padding:26px;display:flex;gap:18px;align-items:flex-start;">
+            <div style="padding:12px;background:var(--brand-2);opacity:.18;border-radius:12px"></div>
+            <div>
+              <h3 style="color:var(--brand);margin:0 0 6px">Điện thoại</h3>
+              <p class="muted">0987248676</p>
+            </div>
+          </div>
+
+          <div class="card" style="padding:26px;display:flex;gap:18px;align-items:flex-start;">
+            <div style="padding:12px;background:var(--brand-2);opacity:.18;border-radius:12px"></div>
+            <div>
+              <h3 style="color:var(--brand);margin:0 0 6px">Email</h3>
+              <p class="muted">avibedj@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="card" style="padding:26px;display:flex;gap:18px;align-items:flex-start;">
+            <div style="padding:12px;background:var(--brand-2);opacity:.18;border-radius:12px"></div>
+            <div>
+              <h3 style="color:var(--brand);margin:0 0 6px">Địa chỉ</h3>
+              <p class="muted">TP. Hồ Chí Minh, Việt Nam</p>
+            </div>
+          </div>
+
+          <!-- SOCIAL -->
+          <div style="margin-top:18px">
+            <h3 style="color:var(--brand);margin-bottom:12px">Theo dõi chúng tôi</h3>
+            <div style="display:flex;gap:14px;">
+              <a href="https://www.facebook.com/profile.php?id=615834595" class="card" style="padding:14px;border-radius:12px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 0 1 1-1h3z" />
+  </svg>
+</a>
+              <a href="https://www.instagram.com/avibedj/" class="card" style="padding:14px;border-radius:12px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+  </svg>
+</a>
+              <a href="#" class="card" style="padding:14px;border-radius:12px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2c2 3 5 4 8 4v5c0 5-4 10-10 10S2 16 2 10V5c3 0 6-1 8-3z" />
+  </svg>
+</a>
+            </div>
+          </div>
+
         </div>
+
       </div>
     </div>
   </section>

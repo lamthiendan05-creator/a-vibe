@@ -1,318 +1,121 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>A‑Vibe — Website</title>
-  <meta name="description" content="Mô tả ngắn gọn về thương hiệu/ dịch vụ của bạn." />
-  <meta name="keywords" content="từ khóa, dịch vụ, sản phẩm" />
-  <meta property="og:title" content="A‑Vibe — Website" />
-  <meta property="og:description" content="Mô tả ngắn gọn về thương hiệu/ dịch vụ của bạn." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/og-image.jpg" />
-  <meta property="og:url" content="https://example.com" />
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700;800" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Bầu Cua Flip</title>
+<style>
+    body{
+        background:#f8f3e8;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        font-family:"Arial";
+    }
 
-  <style>
-  :root {
-    --bg:#050505;
-    --fg:#f5f3e8;
-    --muted:#9a9588;
-    --brand:#ffffff;
-    --brand-2:#ffffff;
-    --card:#0c0c0cdd;
-    --border:#3a3a3a;
-    --radius:18px;
-    --maxw:1250px;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;padding:0;background:var(--bg);color:var(--fg);font-family:'Inter',sans-serif}
-  a{text-decoration:none;color:inherit}
+    .container{
+        display:grid;
+        grid-template-columns:repeat(3,150px);
+        grid-gap:20px;
+    }
 
-  /* HEADER */
-  header{position:sticky;top:0;background:rgba(0,0,0,.6);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);z-index:50}
-  .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
-  nav ul{display:flex;flex-wrap:wrap;gap:16px;list-style:none;margin:0;padding:0}
-  nav a{opacity:.85;font-weight:500;font-size:15px}
-  nav a:hover{opacity:1;color:var(--brand)}
+    .card{
+        width:150px;
+        height:150px;
+        perspective:800px;
+        cursor:pointer;
+    }
+    .inner{
+        width:100%;
+        height:100%;
+        position:relative;
+        transition:transform .6s;
+        transform-style:preserve-3d;
+    }
+    .card.flip .inner{
+        transform:rotateY(180deg);
+    }
 
-  /* BUTTON */
-  .btn{width:100%;text-align:center;padding:14px 32px;border-radius:999px;border:1px solid var(--brand);background:linear-gradient(135deg,#1a1a1a,#000);color:var(--brand);font-weight:600;transition:.25s;box-shadow:0 0 12px rgba(255,215,94,.25)}
-  .btn:hover{background:var(--brand);color:#000;box-shadow:0 0 26px var(--brand-2);transform:translateY(-2px)}
+    .front, .back{
+        position:absolute;
+        width:100%;
+        height:100%;
+        backface-visibility:hidden;
+        border-radius:10px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:26px;
+        font-weight:bold;
+        color:#fff;
+    }
 
-  /* HERO - UPDATED DISCO THEME */
-  main.hero{
-    position:relative;
-    text-align:center;
-    height:100vh;
-    padding:0;
-    background:transparent;
-    overflow:hidden;
-  }
-  .title{font-family:'Playfair Display',serif;}
-  .lead{
-    font-size:20px;
-    max-width:700px;
-    margin:0 auto;
-    color:var(--muted);
-  }
-
-  /* SECTIONS */
-  section{padding:110px 0;border-top:1px solid rgba(255,255,255,.08)}
-  h2{font-family:'Playfair Display',serif;text-align:center;font-size:38px;margin-bottom:14px;font-weight:700;color:var(--brand)}
-  p.section-lead{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 52px;font-size:18px}
-
-  /* GRID + CARDS */
-  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
-  .card{
-    background:var(--card);
-    border:1px solid rgba(255,255,255,.1);
-    border-radius:var(--radius);
-    padding:34px 30px;
-    box-shadow:0 0 32px rgba(0,0,0,.5);
-    backdrop-filter:blur(16px);
-  }
-  .card h3{font-family:'Playfair Display',serif;margin:0 0 16px;font-size:22px;font-weight:700;color:var(--brand)}}
-  .pricing .price{font-size:40px;font-weight:800;margin:6px 0 20px;color:var(--brand)}
-
-  /* FORM */
-  input,textarea{
-    width:100%;padding:16px 18px;border-radius:12px;border:1px solid #333;background:#0a0a0a;color:var(--fg);font-size:16px;margin-bottom:14px
-  }
-
-  /* FOOTER */
-  footer{text-align:center;padding:60px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:14px}
+    .front{
+        background:#d35400;
+    }
+    .back{
+        background:#27ae60;
+        transform:rotateY(180deg);
+    }
 </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="wrap nav">
-      <a href="#top" class="brand"><img src="logo.png" alt="A‑Vibe logo" style="height:48px; width:auto;" /></a>
-      <nav>
-        <ul>
-          <li><a href="#about">Giới thiệu</a></li>
-          <li><a href="#services">Dịch vụ</a></li>
-          <li><a href="#work">Dự án</a></li>
-          <li><a href="#pricing">Bảng giá</a></li>
-          <li><a href="#contact" class="btn">Liên hệ</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
 
-  <!-- Hero -->
-<main id="top" class="hero">
-  <video autoplay muted loop playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;filter:brightness(0.25);"><source src="1122 (1) (1).mp4" type="video/mp4"></video>
-</main>
-
-  <!-- About -->
-  <section id="about">
-    <div class="wrap">
-      <h2>A-Vibe</h2>
-      <p class="section-lead">A-Vibe là đơn vị cung cấp dịch vụ DJ di động – mang âm nhạc, ánh sáng và vibe bùng nổ đến mọi không gian như nhà riêng, rooftop, homestay, hồ bơi và sự kiện công ty. Chúng tao tạo ra trải nghiệm “DJ ở mọi nơi – Vibe cho mọi người”. </p>
-      
-    </div>
-  </section>
-
-  <!-- Combos (Gọn) -->
-  <section id="combos">
-    <div class="wrap">
-      <h2>Combo dịch vụ</h2>
-      <p class="section-lead">Giải pháp chọn nhanh theo nhu cầu sự kiện — tinh gọn, hiệu quả, đúng vibe.</p>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Combo Standard (Cơ bản)</h3>
-          <p class="muted">6.000.000 – 8.000.000 VNĐ</p>
-          <ul class="muted">
-            <li>1 DJ</li>
-            <li>Loa JBL PRX</li>
-            <li>1–3 kỹ thuật viên</li>
-            <li>Ánh sáng cơ bản</li>
-            <li>Setup 2 giờ</li>
-          </ul>
+<div class="container">
+    <div class="card" onclick="flipCard(event, 'bau')">
+        <div class="inner">
+            <div class="front">BẦU</div>
+            <div class="back">?</div>
         </div>
+    </div>
 
-        <div class="card">
-          <h3>Combo Premium (Cao cấp)</h3>
-          <p class="muted">7.000.000 – 10.000.000 VNĐ</p>
-          <ul class="muted">
-            <li>1 DJ</li>
-            <li>Kỹ thuật âm thanh + ánh sáng</li>
-            <li>Quản lý setup</li>
-            <li>Loa – ánh sáng nâng cao</li>
-            <li>Thời lượng 3 giờ</li>
-          </ul>
+    <div class="card" onclick="flipCard(event, 'cua')">
+        <div class="inner">
+            <div class="front">CUA</div>
+            <div class="back">?</div>
         </div>
+    </div>
 
-        <div class="card">
-          <h3>Combo Elite (Đỉnh cao – Showcase Event)</h3>
-          <p class="muted">15.000.000 – 20.000.000 VNĐ</p>
-          <ul class="muted">
-            <li>1 DJ chính + 1 DJ phụ</li>
-            <li>Quản lý tổng sự kiện</li>
-            <li>2 kỹ thuật viên</li>
-            <li>Màn LED P3</li>
-            <li>Ánh sáng sân khấu + laser</li>
-            <li>Trải nghiệm 3 giờ</li>
-          </ul>
+    <div class="card" onclick="flipCard(event, 'tom')">
+        <div class="inner">
+            <div class="front">TÔM</div>
+            <div class="back">?</div>
         </div>
-      </div>
     </div>
-  </section>
 
-  <!-- Services -->
-  <section id="services">
-    <div class="wrap">
-      <h2>Dịch vụ</h2>
-      <p class="section-lead">Các dịch vụ A‑Vibe đang cung cấp.</p>
-      <div class="grid-3">
-        <div class="card"><h3>DJ sinh nhật</h3><p class="muted">Set nhạc theo yêu cầu • DJ trẻ trung • Thiết bị gọn gàng.</p></div>
-        <div class="card"><h3>DJ sự kiện công ty</h3><p class="muted">Kickoff • Year‑end • Launching • Talkshow – đúng vibe, đúng timeline.</p></div>
-        <div class="card"><h3>Thuê âm thanh – ánh sáng</h3><p class="muted">Loa JBL PRX • Đèn moving head • Laser • Setup chuyên nghiệp.</p></div>
-        <div class="card"><h3>Combo Standard / Premium / Elite</h3><p class="muted">Gói tiết kiệm theo cấp độ • Tối ưu chi phí.</p></div>
-        <div class="card"><h3>Booking theo giờ</h3><p class="muted">Thuê DJ theo giờ • Linh hoạt theo sự kiện.</p></div>
-        <div class="card"><h3>Dịch vụ Visual – LED</h3><p class="muted">LED P3 • Visual theo concept sự kiện.</p></div>
-        <div class="card"><h3>DJ cố định</h3><p class="muted">Hợp đồng theo tháng/năm cho quán bar • Lounge • Rooftop.</p></div>
-        <div class="card"><h3>Cho thuê bộ DJ</h3><p class="muted">Pioneer XDJ‑XZ • AlphaTheta AZ.</p></div>
-        <div class="card"><h3>Cho thuê ánh sáng sân khấu</h3><p class="muted">Moving head • Laser • Beam.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Cho thuê thiết bị -->
-  <section id="rental">
-    <div class="wrap">
-      <h2>Cho thuê thiết bị</h2>
-      <p class="section-lead">Thiết bị sự kiện chất lượng cao – báo giá minh bạch.</p>
-      <div class="grid-3">
-        <div class="card"><h3>Bàn DJ Pioneer XDJ‑XZ</h3><p class="muted">400k/giờ • 2.500k/ngày</p></div>
-        <div class="card"><h3>Bàn AlphaTheta AZ</h3><p class="muted">500k/giờ • 3.000k/ngày</p></div>
-        <div class="card"><h3>Loa JBL PRX825W</h3><p class="muted">300k/giờ • 1.800k/ngày</p></div>
-        <div class="card"><h3>Loa JBL PRX915</h3><p class="muted">350k/giờ • 2.000k/ngày</p></div>
-        <div class="card"><h3>Đèn Moving Head Godox</h3><p class="muted">200k/giờ • 1.200k/ngày</p></div>
-        <div class="card"><h3>Đèn Laser Super Beam 300</h3><p class="muted">250k/giờ • 1.500k/ngày</p></div>
-        <div class="card"><h3>Màn LED P3 (6m²)</h3><p class="muted">4.500k/ngày</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Work / Gallery -->
-  
-
-  <!-- Contact -->
-  <section id="contact">
-    <div class="wrap">
-      <h2>Liên hệ</h2>
-      <p class="section-lead">Sẵn sàng tạo nên sự kiện đáng nhớ? Liên hệ ngay với chúng tôi!</p>
-
-      <div class="grid-3" style="display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:1100px;margin:0 auto;">
-
-        <!-- FORM CARD -->
-        <div class="card" style="padding:36px;background:var(--card);border:1px solid var(--border);backdrop-filter:blur(14px)">
-          <form class="space-y-6" id="contact-form">
-            <label style="font-size:14px;font-weight:600;opacity:.9">Họ và tên</label>
-            <input type="text" name="name" placeholder="Nguyễn Văn A" required />
-
-            <label style="font-size:14px;font-weight:600;opacity:.9">Số điện thoại</label>
-            <input type="text" name="phone" placeholder="0987248676" required />
-
-            <label style="font-size:14px;font-weight:600;opacity:.9">Email</label>
-            <input type="email" name="email" placeholder="avibedj@gmail.com" required />
-
-            <label style="font-size:14px;font-weight:600;opacity:.9">Nội dung</label>
-            <textarea name="message" placeholder="Mô tả sự kiện của bạn..." required></textarea>
-
-            <button class="btn" type="submit" style="margin-top:10px;width:100%">Gửi yêu cầu</button>
-          </form>
-          <p id="form-status" class="muted" style="margin-top:10px"></p>
+    <!-- CON CÁ – khi bấm sẽ hiện FREE TOPPING -->
+    <div class="card" onclick="flipCard(event, 'ca')">
+        <div class="inner">
+            <div class="front">CÁ</div>
+            <div class="back">FREE<br>TOPPING</div>
         </div>
+    </div>
 
-        <!-- INFO COLUMN -->
-        <div class="space-y-8">
-
-          <div class="card" style="padding:26px;display:flex;gap:18px;align-items:flex-start;">
-            <div style="padding:12px;background:var(--brand-2);opacity:.18;border-radius:12px"></div>
-            <div>
-              <h3 style="color:var(--brand);margin:0 0 6px">Điện thoại</h3>
-              <p class="muted">0987248676</p>
-            </div>
-          </div>
-
-          <div class="card" style="padding:26px;display:flex;gap:18px;align-items:flex-start;">
-            <div style="padding:12px;background:var(--brand-2);opacity:.18;border-radius:12px"></div>
-            <div>
-              <h3 style="color:var(--brand);margin:0 0 6px">Email</h3>
-              <p class="muted">avibedj@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="card" style="padding:26px;display:flex;gap:18px;align-items:flex-start;">
-            <div style="padding:12px;background:var(--brand-2);opacity:.18;border-radius:12px"></div>
-            <div>
-              <h3 style="color:var(--brand);margin:0 0 6px">Địa chỉ</h3>
-              <p class="muted">TP. Hồ Chí Minh, Việt Nam</p>
-            </div>
-          </div>
-
-          <!-- SOCIAL -->
-          <div style="margin-top:18px">
-            <h3 style="color:var(--brand);margin-bottom:12px">Theo dõi chúng tôi</h3>
-            <div style="display:flex;gap:14px;">
-              <a href="https://www.facebook.com/profile.php?id=615834595" class="card" style="padding:14px;border-radius:12px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.5l.5-4H14V7a1 1 0 0 1 1-1h3z" />
-  </svg>
-</a>
-              <a href="https://www.instagram.com/avibedj/" class="card" style="padding:14px;border-radius:12px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-  </svg>
-</a>
-              <a href="#" class="card" style="padding:14px;border-radius:12px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;">
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M12 2c2 3 5 4 8 4v5c0 5-4 10-10 10S2 16 2 10V5c3 0 6-1 8-3z" />
-  </svg>
-</a>
-            </div>
-          </div>
-
+    <div class="card" onclick="flipCard(event, 'ga')">
+        <div class="inner">
+            <div class="front">GÀ</div>
+            <div class="back">?</div>
         </div>
-
-      </div>
     </div>
-  </section>
 
-  <footer>
-    <div class="wrap">
-      <div class="muted">© <span id="y"></span> A‑Vibe. All rights reserved.</div>
+    <div class="card" onclick="flipCard(event, 'nai')">
+        <div class="inner">
+            <div class="front">NAI</div>
+            <div class="back">?</div>
+        </div>
     </div>
-  </footer>
+</div>
 
-  <script>
-    // Năm footer
-    document.getElementById('y').textContent = new Date().getFullYear();
+<script>
+function flipCard(e, type){
+    let card = e.currentTarget;
 
-    // Form handler: mở mail app với nội dung
-    const form = document.getElementById('contact-form');
-    const status = document.getElementById('form-status');
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      const data = new FormData(form);
-      const name = encodeURIComponent(data.get('name'));
-      const email = encodeURIComponent(data.get('email'));
-      const message = encodeURIComponent(data.get('message'));
-      const subject = encodeURIComponent('Liên hệ từ website');
-      const body = encodeURIComponent(`Họ tên: ${decodeURIComponent(name)}\nEmail: ${decodeURIComponent(email)}\n\n${decodeURIComponent(message)}`);
-      window.location.href = `mailto:avibedj@gmail.com?subject=${subject}&body=${body}`;
-      status.textContent = 'Đã mở trình gửi email của bạn. Nếu không thấy, vui lòng gửi trực tiếp: avibedj@gmail.com';
-      form.reset();
-    });
-  </script>
+    // Chỉ flip con cá để ra chữ FREE TOPPING
+    if(type === "ca"){
+        card.classList.toggle("flip");
+    }
+}
+</script>
+
 </body>
 </html>

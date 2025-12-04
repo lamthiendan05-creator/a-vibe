@@ -16,7 +16,6 @@
 
     .board{
         width:900px;
-        height:auto;
         position:relative;
     }
 
@@ -26,7 +25,7 @@
         border-radius:12px;
     }
 
-    /* Vùng click của từng con */
+    /* Hitbox click */
     .hitbox{
         position:absolute;
         width:240px;
@@ -35,6 +34,7 @@
         transform-style:preserve-3d;
         transition:transform .6s;
     }
+
     .hitbox .front, .hitbox .back{
         position:absolute;
         width:100%;
@@ -63,28 +63,23 @@
 <body>
 
 <div class="board">
-    <img src="board.png" class="bg">
 
-    <!-- GÀ -->
-    <div class="hitbox" style="top:60px; left:60px;"></div>
+    <!-- Dùng đúng tên file bạn đã upload -->
+    <img src="DESIGN SAN THAI (1).png" class="bg">
 
-    <!-- BẦU -->
-    <div class="hitbox" style="top:60px; left:330px;"></div>
+    <!-- Hitbox theo vị trí 6 con -->
+    <div class="hitbox" style="top:60px; left:60px;"></div>   <!-- Gà -->
+    <div class="hitbox" style="top:60px; left:330px;"></div>  <!-- Bầu -->
+    <div class="hitbox" style="top:60px; left:600px;"></div>  <!-- Nai -->
 
-    <!-- NAI -->
-    <div class="hitbox" style="top:60px; left:600px;"></div>
-
-    <!-- CÁ → con cần lật -->
+    <!-- CÁ – sẽ lật ra FREE TOPPING -->
     <div class="hitbox" id="fish" style="top:330px; left:60px;">
         <div class="front"></div>
         <div class="back">FREE<br>TOPPING</div>
     </div>
 
-    <!-- CUA -->
-    <div class="hitbox" style="top:330px; left:330px;"></div>
-
-    <!-- TÔM -->
-    <div class="hitbox" style="top:330px; left:600px;"></div>
+    <div class="hitbox" style="top:330px; left:330px;"></div> <!-- Cua -->
+    <div class="hitbox" style="top:330px; left:600px;"></div> <!-- Tôm -->
 
 </div>
 

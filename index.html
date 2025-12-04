@@ -2,119 +2,96 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Bầu Cua Flip</title>
+<title>Bầu Cua Flip – Free Topping</title>
+
 <style>
     body{
-        background:#f8f3e8;
         display:flex;
         justify-content:center;
         align-items:center;
         height:100vh;
-        font-family:"Arial";
+        background:#000;
+        margin:0;
     }
 
-    .container{
-        display:grid;
-        grid-template-columns:repeat(3,150px);
-        grid-gap:20px;
-    }
-
-    .card{
-        width:150px;
-        height:150px;
-        perspective:800px;
-        cursor:pointer;
-    }
-    .inner{
-        width:100%;
-        height:100%;
+    .board{
+        width:900px;
+        height:auto;
         position:relative;
-        transition:transform .6s;
-        transform-style:preserve-3d;
-    }
-    .card.flip .inner{
-        transform:rotateY(180deg);
     }
 
-    .front, .back{
+    img.bg{
+        width:100%;
+        display:block;
+        border-radius:12px;
+    }
+
+    /* Vùng click của từng con */
+    .hitbox{
+        position:absolute;
+        width:240px;
+        height:240px;
+        cursor:pointer;
+        transform-style:preserve-3d;
+        transition:transform .6s;
+    }
+    .hitbox .front, .hitbox .back{
         position:absolute;
         width:100%;
         height:100%;
         backface-visibility:hidden;
-        border-radius:10px;
+        border-radius:50%;
         display:flex;
         justify-content:center;
         align-items:center;
-        font-size:26px;
+        font-size:42px;
         font-weight:bold;
         color:#fff;
     }
 
-    .front{
-        background:#d35400;
-    }
     .back{
         background:#27ae60;
         transform:rotateY(180deg);
     }
+
+    .flip{
+        transform:rotateY(180deg);
+    }
 </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="card" onclick="flipCard(event, 'bau')">
-        <div class="inner">
-            <div class="front">BẦU</div>
-            <div class="back">?</div>
-        </div>
+<div class="board">
+    <img src="board.png" class="bg">
+
+    <!-- GÀ -->
+    <div class="hitbox" style="top:60px; left:60px;"></div>
+
+    <!-- BẦU -->
+    <div class="hitbox" style="top:60px; left:330px;"></div>
+
+    <!-- NAI -->
+    <div class="hitbox" style="top:60px; left:600px;"></div>
+
+    <!-- CÁ → con cần lật -->
+    <div class="hitbox" id="fish" style="top:330px; left:60px;">
+        <div class="front"></div>
+        <div class="back">FREE<br>TOPPING</div>
     </div>
 
-    <div class="card" onclick="flipCard(event, 'cua')">
-        <div class="inner">
-            <div class="front">CUA</div>
-            <div class="back">?</div>
-        </div>
-    </div>
+    <!-- CUA -->
+    <div class="hitbox" style="top:330px; left:330px;"></div>
 
-    <div class="card" onclick="flipCard(event, 'tom')">
-        <div class="inner">
-            <div class="front">TÔM</div>
-            <div class="back">?</div>
-        </div>
-    </div>
+    <!-- TÔM -->
+    <div class="hitbox" style="top:330px; left:600px;"></div>
 
-    <!-- CON CÁ – khi bấm sẽ hiện FREE TOPPING -->
-    <div class="card" onclick="flipCard(event, 'ca')">
-        <div class="inner">
-            <div class="front">CÁ</div>
-            <div class="back">FREE<br>TOPPING</div>
-        </div>
-    </div>
-
-    <div class="card" onclick="flipCard(event, 'ga')">
-        <div class="inner">
-            <div class="front">GÀ</div>
-            <div class="back">?</div>
-        </div>
-    </div>
-
-    <div class="card" onclick="flipCard(event, 'nai')">
-        <div class="inner">
-            <div class="front">NAI</div>
-            <div class="back">?</div>
-        </div>
-    </div>
 </div>
 
 <script>
-function flipCard(e, type){
-    let card = e.currentTarget;
-
-    // Chỉ flip con cá để ra chữ FREE TOPPING
-    if(type === "ca"){
-        card.classList.toggle("flip");
-    }
-}
+document.getElementById("fish").addEventListener("click", function(){
+    this.classList.toggle("flip");
+});
 </script>
 
 </body>
